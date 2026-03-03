@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice-Based Shopping Assistant</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+    <!-- Background Elements -->
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+    <div class="glow-orb orb-4"></div>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="glass-panel main-header">
+            <div class="logo">
+                <i class="fa-solid fa-microphone-lines icon-gradient"></i>
+                <h1>Aura <span>Voice Assistant</span></h1>
+            </div>
+            <div class="status-badge" id="system-status">
+                <span class="pulse-dot"></span>
+                <span>System Ready</span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="content-area">
+
+            <!-- Assistant Interface -->
+            <section class="assistant-panel glass-panel">
+                <div class="assistant-avatar">
+                    <div class="mic-button-wrapper">
+                        <div class="ripple-layer layer-1"></div>
+                        <div class="ripple-layer layer-2"></div>
+                        <div class="ripple-layer layer-3"></div>
+                        <button id="mic-btn" class="mic-btn" aria-label="Tap to speak">
+                            <i class="fa-solid fa-microphone"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <h2 id="assistant-prompt">"What are you looking for today?"</h2>
+
+                <div class="transcription-box" id="transcription-box" style="display: none;">
+                    <i class="fa-solid fa-quote-left quote-mark"></i>
+                    <p id="transcribed-text">...</p>
+                    <i class="fa-solid fa-quote-right quote-mark right"></i>
+                </div>
+
+                <div class="search-fallback">
+                    <span>Or type your search</span>
+                    <div class="search-input-wrapper">
+                        <input type="text" id="text-search-input" placeholder="e.g. running shoes for men...">
+                        <button id="text-search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Loading Indicator -->
+            <div id="loading-container" class="loading-container" style="display: none;">
+                <div class="processing-bars">
+                    <span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <p>Analyzing products...</p>
+            </div>
+
+            <!-- Recommendations Grid -->
+            <section class="recommendations-panel" id="recommendations-container" style="display: none;">
+                <div class="panel-header">
+                    <h3><i class="fa-solid fa-wand-magic-sparkles"></i> Top Matches for You</h3>
+                    <div class="results-count" id="results-count">Found 0 products</div>
+                </div>
+
+                <div class="products-grid" id="products-grid">
+                    <!-- Product cards will be dynamically injected here -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>Powered by <span class="badge">Google Speech API</span> <span class="badge">NLP TF-IDF</span> <span
+                    class="badge">Flask</span></p>
+        </footer>
+    </div>
+
+    <!-- Error Toast -->
+    <div class="toast" id="error-toast">
+        <i class="fa-solid fa-circle-exclamation"></i>
+        <span id="toast-message">Error message</span>
+    </div>
+
+    <!-- Template for Product Card -->
+    <template id="product-card-template">
+        <div class="product-card glass-panel">
+            <div class="product-image-container">
+                <img src="" alt="Product" class="product-img" loading="lazy">
+                <div class="match-score">Match: <span class="score-val">0</span>%</div>
+            </div>
+            <div class="product-info">
+                <div class="product-category">Category</div>
+                <h4 class="product-title">Product Name</h4>
+                <div class="product-meta">
+                    <span class="rating"><i class="fa-solid fa-star"></i> <span class="rating-val">4.5</span></span>
+                </div>
+                <div class="product-footer">
+                    <div class="prices">
+                        <span class="discount-price">₹0</span>
+                        <span class="actual-price">₹0</span>
+                    </div>
+                    <a href="#" target="_blank" class="buy-btn" rel="noopener noreferrer">
+                        <i class="fa-solid fa-cart-shopping"></i> View
+                    </a>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <script src="/static/js/main.js"></script>
+</body>
+
+</html>
