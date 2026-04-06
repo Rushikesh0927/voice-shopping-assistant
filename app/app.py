@@ -95,5 +95,4 @@ Wrap the `request.json` access in a `try-except` block to gracefully handle `Bad
         return jsonify({"success": False, "error": "NLP Engine is down."}), 500
 
 
-if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+Ensure `debug=False` for all production deployments. Use environment variables (e.g., `FLASK_ENV`) to control debug mode and other production-specific settings, ensuring that debug features are only active in development environments.
