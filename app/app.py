@@ -41,10 +41,7 @@ def process_audio():
     if 'audio' not in request.files:
         return jsonify({"success": False, "error": "No audio file provided"}), 400
         
-    audio_file = request.files['audio']
-    audio_bytes = audio_file.read()
-    
-    print("Received audio file from frontend. Size:", len(audio_bytes), "bytes")
+Implement a maximum file size limit for uploaded audio files and validate the content type (e.g., `audio/wav`). Return appropriate HTTP status codes (e.g., 413 Payload Too Large, 415 Unsupported Media Type) for invalid uploads.
     
     # Send to Voice Agent for transcription
     transcription_result = voice_agent.transcribe_audio(audio_bytes)
