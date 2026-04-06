@@ -81,10 +81,7 @@ def search_text():
     """
     Fallback endpoint to allow text-based searches through the UI.
     """
-    data = request.json
-    query = data.get('query', '')
-    
-    if not query:
+Wrap the `request.json` access in a `try-except` block to gracefully handle `BadRequest` exceptions and return a 400 status code with a clear error message.
         return jsonify({"success": False, "error": "Query is empty"}), 400
         
     if recommender:
